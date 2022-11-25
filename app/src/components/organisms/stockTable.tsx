@@ -16,15 +16,14 @@ type Stock = {
   name: string;
 };
 
-export default function StockTable() {
-  const [data, setData] = React.useState<Stock[]>([]);
-  useEffect(() => {
-    axios.get(`/api/stock/stocks`).then((response) => {
-      console.log("axios_stock", response);
-      setData(response.data);
-    });
-  }, []);
+type Props = {
+  data: Stock[] | undefined;
+};
 
+export default function StockTable({ data }: Props) {
+  // console.log("data", data);
+
+  if (!data) return <></>;
   return (
     <>
       <TableContainer component={Paper}>

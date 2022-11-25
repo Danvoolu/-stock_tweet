@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse<TweetV2[]>) => {
   const q = req.query.q as string;
-  console.log("q", q);
   // Instantiate with desired auth type (here's Bearer v2 auth)
   const a = process.env.TWITTER_API_KEY;
   const bearerToken = process.env.BEARER_TOKEN;

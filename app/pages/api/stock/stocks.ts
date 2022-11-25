@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  return res.status(200).json(stocks);
+  const q = req.query.q as string;
+  const searchResult = stocks.filter((x) => x.name.includes(q) || x.code === q);
+  return res.status(200).json(searchResult);
 };
 
 const stocks = [
